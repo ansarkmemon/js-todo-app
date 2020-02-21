@@ -1,0 +1,136 @@
+$dark-bg: #22263D;
+
+.projects-section {
+  h4.ui.header.title,
+  h1.ui.header.main-title {
+   color: #FFFFFF;
+  }
+
+  h1.ui.header.main-title > .sub.header {
+    color: #6D6F80;
+    font-size: 12px;
+  }
+}
+
+.project-section-content {
+  max-width: 300px;
+}
+.app-container {
+  background: $dark-bg;
+  border-radius: 10px;
+  height: 70vh;
+  width: 80vw;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  max-width: 800px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
+}
+
+.projects-section,
+.tasks-section {
+  width: 50%;
+  height: 95%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.icon.input.search-field {
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+
+  input {
+    background: #393C53;
+  }
+}
+
+.projects-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-row-gap: 20px;
+}
+
+.project-item {
+  background: green;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.tasks-section {
+  background: #fff;
+  border-radius: 10px;
+  margin-right: 1%;
+  position: relative;
+}
+
+.tasks-section-content {
+  max-width: 80%;
+
+  h3.ui.header > .sub.header {
+    font-size: 12px;
+  }
+}
+
+.tasks_meta-bar {
+  display: flex;
+  margin-bottom: 20px;
+
+  .ui.header {
+    max-width: 80%;
+  }
+}
+
+.tasks_members {
+  display: flex;
+
+  .ui.avatar.image {
+    margin-right: -7px;
+    border: 2px solid white;
+  }
+}
+
+
+.item-inner {
+  margin: 5px 0;
+  .ui.checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.status-tag {
+  font-size: 8px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  
+  &--approved {
+    background: #E1F5F4;
+    color: #77D1D0;
+  }
+}
+
+button.add-button.ui.circular {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #8B4DC7;
+  box-shadow: 14px 14px 54px 0px rgba(139,77,199,1);
+
+  i.plus.icon {
+    color: white;
+  }
+}
