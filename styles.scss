@@ -89,6 +89,7 @@ $dark-bg: #22263D;
 
 .tasks-section-content {
   max-width: 80%;
+  width: 80%;
 
   h3.ui.header > .sub.header {
     font-size: 12px;
@@ -100,7 +101,7 @@ $dark-bg: #22263D;
   margin-bottom: 20px;
 
   .ui.header {
-    max-width: 80%;
+    width: 80%;
   }
 }
 
@@ -140,13 +141,24 @@ $dark-bg: #22263D;
 }
 
 button.add-button.ui.circular {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
   background: #8B4DC7;
   box-shadow: 14px 14px 54px 0px rgba(139,77,199,1);
 
   i.plus.icon {
     color: white;
+  }
+}
+
+.add-new-section {
+  position: fixed;
+  display: flex;
+  bottom: 20px;
+  width: 350px;
+  justify-content: space-between;
+  align-items: center;
+
+  .ui.input {
+    flex: 2;
+    margin-right: 10px;
   }
 }

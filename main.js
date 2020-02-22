@@ -1,13 +1,32 @@
-import { projectsData } from './mockData';
+import { taskStatuses, projectsData } from './mockData';
 import TodoItem from './components/todoItem';
 
-const searchField = document.getElementById('search-input');
-const todoTextElements = document.querySelectorAll('.todo-text');
-const todoList = document.querySelector('.list');
-const projectOverviewEl = document.querySelector('.projects-overview');
-const currentProjectTitleEl = document.querySelector('.current-project-title');
+const $ = (selector) => document.querySelector(selector);
 
+const $id = (selector) => {
+  let cleanedSelector = selector;
+  if(selector[0] === '#') {
+    cleanedSelector = selector.split('').splice(1).join('');
+  }
+  return document.getElementById(cleanedSelector);
+}
+
+const searchField = $id('#search-input');
+const todoList = $('.list');
+const projectOverviewEl = $('.projects-overview');
+const currentProjectTitleEl = $('.current-project-title');
+const addButton = $('.add-button');
+const addField = $id('#add-note-field');
 let projectSelected = projectsData['CP'];
+
+const handleNewTodo = () => {
+  const tasks = [...projectSelected.tasks, { id: projectSelected.tasks.length + 1, title: addField.value, status: taskStatuses.BLOCKED }];
+  projectSelected.tasks = tasks;
+  loadTasks();
+  addField.value = '';
+}
+
+addButton.addEventListener('click', handleNewTodo);
 
 const filterTodos = (value) => {
   const todoItems = projectSelected.tasks;
@@ -33,7 +52,7 @@ const handleProjectSelection = (projectName) => {
   
   currentProjectTitleEl.innerHTML = `
     ${projectSelected.title}
-    <div class="sub header">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda !</div>
+    ${projectSelected.subTitle && '<div class="sub header">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda !</div>' }
   `
   
   loadTasks();
@@ -44,15 +63,12 @@ searchField.addEventListener('input', (e) => {
 })
 
 const loadProjects = () => {
-  const projectsList = Object.keys(projectsData).map(project => (`
-    <div class="project-item">${project}</div>
-  `));
-
-  if (projectsList.length) {
-    projectOverviewEl.innerHTML = projectsList.join('');
-  } else {
-    projectOverviewEl.innerHTML = `<p>Loading...</p>`;
-  }
+  projectOverviewEl.innerHTML = 
+    Object.keys.length ?
+    Object.keys(projectsData).map(project => (`
+      <div class="project-item">${project}</div>
+    `)).join('') :
+    `<p>Loading...</p>`;
 }
 
 
