@@ -52,6 +52,12 @@ $dark-bg: #22263D;
 
   input {
     background: #393C53;
+    color: white;
+
+    &:focus {
+      outline: none;
+      border: transparent;
+    }
   }
 }
 
@@ -66,6 +72,11 @@ $dark-bg: #22263D;
   background: green;
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+
+  &.selected {
+    background: yellow;
+  }
 }
 
 
@@ -100,6 +111,11 @@ $dark-bg: #22263D;
     margin-right: -7px;
     border: 2px solid white;
   }
+}
+
+.todos-wrapper {
+  height: 250px;
+  overflow-y: auto;
 }
 
 
